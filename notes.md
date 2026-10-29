@@ -317,3 +317,32 @@ undefined
 Kyun?
 
 Kyuki let aur const global hone ke baad bhi window ki property nahi bante.
+
+Now We'll Start Episode 6:
+Undefined vs Not Defined:
+undefined kya hota hai?
+Jab variable declare ho chuka ho, lekin usko abhi value assign na hui ho, toh uski value undefined ho sakti hai.
+var a;
+
+console.log(a);
+
+Output:
+undefined
+
+Kyun? Variable a exist karta hai, lekin usko value assign nahi ki.
+
+not defined kya hota hai?
+Jab hum aise variable ko access karte hain jo exist hi nahi karta, toh JavaScript ReferenceError deti hai.
+console.log(b);
+
+
+Output:
+ReferenceError: b is not defined
+
+
+Kyun? Humne b naam ka variable declare hi nahi kiya.
+
+Simple Meaning:
+Undefined: Variable declared hai, lekin uski value abhi assign nahi hui.
+Not defined: Variable ko declare hi nahi kiya gaya, isliye access karne par ReferenceError aata hai.
+
