@@ -74,7 +74,7 @@ ab isko Zara Code se smjhlete hain:
 var a = 10;
 
 function greet() {
-    console.log("Hello");
+console.log("Hello");
 }
 
 greet();
@@ -90,17 +90,92 @@ Function ka context sabse upar hai, isliye pehle ye execute hoga.
 
 Function console.log("Hello") execute karega. Jab greet() ka kaam complete ho jaata hai, uska Execution Context stack se pop ho jaata hai.
 Execution Context vs Call Stack
-Execution Context	                        Call Stack
-Code execute karne ka environment	        Execution Contexts ko manage karta hai
-Memory aur execution setup hota hai	        Contexts push aur pop hote hain
-Function call par naya context banta hai	Naya context stack ke top par aata hai
+Execution Context Call Stack
+Code execute karne ka environment Execution Contexts ko manage karta hai
+Memory aur execution setup hota hai Contexts push aur pop hote hain
+Function call par naya context banta hai Naya context stack ke top par aata hai
 Yaad rakhna: Execution Context batata hai code kahan execute ho raha hai, aur Call Stack manage karta hai ke kaunsa context abhi execute ho raha hai.
 Call Stack ka Core Concept hai:
 CallStack Maintains the Order of Execution of Execution Contexts.
 
+Now We'll Start Episode 3:
+Hoisting in JS:
+Hoisting JavaScript ka behaviour hai jahan code execute hone se pehle variables aur functions ki declarations process hoti hain.
 
+Var ke saath:
+console.log(a);
+var a = 10;
+console.log(a);
 
+Output:
+undefined
+10
 
+ab sawaal hai ke a ki ki val 10 hone ke Bawajood bhi undefined kyun aya.
+is Cheez ko jawab hai na humen Execution Context se pata chalega
+Sabse pehle humen yeh Smjhna parega ke JS Code ko Kaise Execute krti hai:
+Jab JS Code ko Exercute krti hai, toh Execution Context main 2 Phases hote hain:
 
+1. Memory Creation: JavaScript variables ke liye memory banati hai. var ke case mein shuru mein value undefined hoti hai.
+2. Code Execution: JavaScript code ko line by line execute karti hai aur actual values assign karti hai.
 
+ab isi Example ko dekhte hain:
+console.log(a);
+var a = 10;
+Step 1:
+Memory Creation Phase:
+JS a ke liye Memory Banati hai.
+a = undefined
 
+Step 2:
+Code Execution Phase:
+console.log(a); // undefined
+kyun ke abhi a = 10 wali Line Execute nahi hoti hai.
+phir yeh wali Line Execute hoti hai:
+var a = 10
+then a ki Val 10 Assign hojaati hai.
+
+Hoisting Easy definition:
+
+Hoisting JavaScript ka behaviour hai jahan code execute hone se pehle variables aur functions ki declarations ko Execution Context ke creation phase mein handle kiya jata hai.
+
+ab Function main Hoisting ko smjhte hain:
+yeh Code dekho:
+greet();
+
+function greet() {
+    console.log("Hello!");
+}
+
+Output:
+Hello!
+Tum sochoge: “Lekin humne greet() ko function banane se pehle call kar diya!”
+
+aisa isliye hua ke Memory Creation Phase main key ka name fn ka name hota hai and key main poora function store hote hain or jab humen isko invoke krte hain to yeh Work krjata hai bas yehi reason hai.
+
+hum log ab Arrow Function ko bhi dekhlete hain
+
+Arrow Function main nuhh Case thora different hota hai 
+
+greet();
+var greet = () => {
+    console.log("Hello!");
+};
+is main hum ko Type Error ka Error Return krdega.
+kyun ke Memory Creation Phase main ek Function nahi balke ek variable store horha hai or uski Value Undefined hai
+now ab hum sochenge ke unefined ana chahye Type Error kyun arha hai baat to sahi hai lekin hum log kia krrhe hain ke memory creation phase main a ki value undefined hoti hai correct soo hum yeh krne ki koshish krrhe hain "unefined()" isliye hum ko Type Error ka Error Throw krrha hai.
+
+Toh undefined aur TypeError mein difference kya hai?
+Case 1: Value print karna
+console.log(greet);
+Output: undefined
+
+Hum sirf value dekh rahe hain.
+
+Case 2: Function ki tarah call karna
+greet();
+Output: TypeError
+
+Hum undefined ko function ki tarah call kar rahe hain, jo possible nahi hai.
+
+Akshay Sir ne isi Episode main Demo of CallStack in the Browser bhi prhaya hai.
