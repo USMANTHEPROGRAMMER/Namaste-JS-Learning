@@ -179,3 +179,53 @@ Output: TypeError
 Hum undefined ko function ki tarah call kar rahe hain, jo possible nahi hai.
 
 Akshay Sir ne isi Episode main Demo of CallStack in the Browser bhi prhaya hai.
+
+Now We'll Start Episode 4 (How functions work in JS & Variable Environment ):
+Hum Logon ne is Episode main ye seekha ke Function kaise Work krte hain.
+hum logon ne yeh Code likha hai:
+var x = 1;
+a()
+b()
+console.log(x)
+
+function (a) {
+    var x = 10;
+    console.log(x)
+}
+
+function (b) {
+    var x = 100;
+    console.log(x);
+}
+
+ab hum yeh dekhte hain ke BG main yeh Code kaise work krrha hota hai:
+Sabse pehle to ek ek GEC(Global Execution Context) banta hai:
+jahan code run hota hai and us GEC main 2 Phases main kam hota hai sabse pehle:
+1. Memory Creation Phase
+2. Code Execution Phase
+
+Memory Creation Phase
+
+Sabse pehle GEC ki memory mein:
+- x → undefined
+- a → poora function store hoga.
+- b → poora function store hoga.
+
+Code Execution Phase
+
+1. var x = 1 execute hoga, toh x = 1.
+2. a() call hoga, toh naya FEC banega. Usmein local x = 10 hoga aur 10 print hoga.
+3. a() complete hoga, toh uska FEC remove ho jayega.
+4. b() call hoga, toh naya FEC banega. Usmein local x = 100 hoga aur 100 print hoga.
+5. b() complete hoga, toh uska FEC bhi remove ho jayega.
+6. Aakhir mein console.log(x) global x ki value 1 print karega.
+
+Final Output:
+
+10
+100
+1
+
+Yaad rakho: a() aur b() ke andar apna local x hai, isliye global x = 1 change nahi hota aur nahi Console hota hai.
+
+
