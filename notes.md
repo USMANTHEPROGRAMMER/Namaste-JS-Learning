@@ -228,4 +228,92 @@ Final Output:
 
 Yaad rakho: a() aur b() ke andar apna local x hai, isliye global x = 1 change nahi hota aur nahi Console hota hai.
 
+Now We'll Start Learning Episode 5:
+Shortest JS Program
 
+sabse pehle yeh Code dekho:
+// Empty JavaScript File
+Ismein kuch bhi nahi likha. Lekin jab browser is file ko run karta hai tab bhi JavaScript kaafi kaam karti hai.
+jaisa ke humne pehle prha tha ke sabse pehle GEC banta hai.
+Us Waqt Browser main humen 2 cheezen Free main deta hai.
+window object 
+this keyword
+1. Window Object: Browser ka global object. Browser bohot saari cheezen iske andar rakhta hai.
+2. this: Global level par browser mein this isi window ko point karta hai.
+
+Window Browser ka Global Object hai
+Browser bht saari cheezen iske andar rkhta hai.
+console.log(window);
+Iske andar tumhe bohot saari cheezen milengi:
+- alert
+- setTimeout
+- console
+- document
+- location
+- history
+Yaani ye sab browser humein window ke through deta hai.
+
+Step 3: this keyword kya hai?
+Global level par browser mein:
+console.log(this);
+Output:
+Window {...}
+
+Aur agar likho:
+console.log(this === window);
+
+Output:
+true
+
+Matlab: Browser ke global scope mein this aur window same object ko refer karte hain.
+
+this humara ek alag and seperate concept hai Global Level par to this Global Object ko Target krta hai lekin functions main iska case different hota hai jo ke hum baad main seekhenge.
+
+Step 4: var aur window
+Ye bohot important interview point hai.
+var a = 10;
+console.log(window.a);
+console.log(this.a);
+
+Output:
+10
+10
+
+Kyun?
+
+Kyuki global var browser ke window object ki property ban jaata hai.
+
+Step 5: let aur const ke saath
+let b = 20;
+const c = 30;
+
+console.log(window.b);
+console.log(window.c);
+
+Output:
+undefined
+undefined
+
+Kyun?
+
+Kyuki let aur const global hone ke baad bhi window ki property nahi bante.
+
+
+jab bhi hum kisi cheez ko access krte hain to wo Global Object main Check krta hai like jo cheez hum Global likh rhe hain and then hum ko Output Return krta hai.
+
+let aur const ke saath
+let b = 20;
+const c = 30;
+
+console.log(window.b);
+console.log(window.c);
+
+
+Output:
+undefined
+undefined
+
+
+Kyun?
+
+Kyuki let aur const global hone ke baad bhi window ki property nahi bante.
