@@ -456,3 +456,75 @@ Scope	                    Variable kahan accessible hai?
 Lexical Environment	        Variables aur outer environment ka reference
 Scope Chain	                Variable ko current se outer scopes tak search karna
 
+Now We're Starting Episode 8 Let & Const in JS and TDZ:
+sabse pehle hum ek smjhlete hain ke jab bhi hum var ko initialization se pehl access krne ki koshish krte thy it throws us undefined and jab bhi hum log let ko initialize krne se pehle console krate hain to yeh humen cannot access before initialization ka Error Throw krta hai means ke hum log isko initialize hone se pehle Access nahi krskte
+
+jo humara let hai wo Window Object main nahi balke kisi or Memory main Store hota hai thats why we even cant access let aur const using windows
+
+Now ab hum TDZ smjhlete hain:
+TDZ woh time period hai jab let ya const variable create ho chuka hota hai, lekin initialize hone se pehle hum usko access nahi kar sakte.
+
+console.log(a);
+var a = 10;
+Output:
+ReferenceError
+
+Kyun?
+1. JavaScript Memory Creation Phase mein a ko register karti hai.
+2. Lekin abhi usko value 10 assign nahi hui.
+3. Jab hum pehle hi a access karte hain, toh error aata hai.
+4. Jab let a = 10 execute hota hai, variable initialize ho jata
+
+TDZ ko aise yaad rakho:
+TDZ — Access not allowed
+Variable declared, but not initialized
+
+Initialization
+Now variable can be accessed
+
+to jab bhi hum Variable ko Access krne ki koshish krte hain in TDZ to wo humko ReferenceError throw krta hai.
+
+1. Memory Creation Phase (GEC)
+Jab JavaScript code execute hota hai, sabse pehle GEC create hota hai. GEC ke Memory Creation Phase mein variables ke liye memory/bindings prepare hoti hain.
+Declaration	    Memory Creation Phase
+var a	        undefined
+let b	        Memory allocated, but uninitialized (TDZ)
+const c	        Memory allocated, but uninitialized (TDZ)   
+
+Ek important baat yaad rakhna!
+Memory Creation Phase
+- var → undefined
+- let → Uninitialized (TDZ)
+- const → Uninitialized (TDZ)
+
+Code Execution Phase
+- var → Actual value
+- let → Actual value
+- const → Actual value
+
+main ek dafa dubara se Explain krdeta hoon ke like jo humara var hai wo jo hai nuhh window object main hota hai but jab baat aati hai const and let ki to wo ek alag Storage/Space main banta hai that are reserved for let and const. ek auar baat ke jab bhi hum window ki baat krte hain so we are targetting like Global Object.
+
+Broo ab hum Reference Error ko ache se smjhenge:
+Jab JavaScript kisi aise variable ko access karne ki koshish kare jise us waqt access nahi kiya ja sakta, toh ReferenceError aa sakta hai.
+
+ek aur cheez ke hum let ko Re-Declare nahi krskte! and if we try to do this yeh humen Syntax Error Return krdega!
+lekin ye cheez hum var ke through krskte hain
+const to bht strict hai na hi to hum use Re-Declare krskte hain and naa hii Update krskte hain.
+
+Difference BW TypeError, ReferenceError and SyntaxError
+
+Ultimate Difference Chart
+Error	Simple meaning
+SyntaxError	Code likhne ke rules mein mistake
+ReferenceError	Variable ka reference available nahi
+TypeError	Value par invalid operation perform karna
+
+Yaad rakhne ka easiest formula
+- SyntaxError: Code likhne mein mistake.
+- ReferenceError: Variable nahi mil raha ya accessible nahi.
+- TypeError: Value mil gayi, lekin us par operation allowed nahi.
+
+
+
+
+
