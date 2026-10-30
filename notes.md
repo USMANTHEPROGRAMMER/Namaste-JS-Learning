@@ -524,7 +524,99 @@ Yaad rakhne ka easiest formula
 - ReferenceError: Variable nahi mil raha ya accessible nahi.
 - TypeError: Value mil gayi, lekin us par operation allowed nahi.
 
+Now We'll Start Episode-9 Block Scoped and Shadowing in JS
+Firstly jo Curly Braces hote hain like this:
+{
+
+}
+this is Called Block in JS
+iske andar hum logon ko bhi likhna hota hai hum likh skte hain.
+
+Block Scope: let aur const variables sirf us block { } ke andar accessible hote hain jahan woh declare kiye gaye hain.
+
+humne ek aur cheez dekhi ke like jaise jab hum like yeh krte hain:
+{
+    let a = 100
+    const b = 1000
+    var c = 10000
+}
+do humara jo Global Scope hai usmen humara c store hota hai as undefined firstly then after executing the code it assigned the value bu itself
+magar magar magar main game yeh hai ke let aur const ke liye humara ek alag Storage/Space bnta hai named as Block so that proves ke hum let aur const ko block ke bahar access nahi krskte but jab var ki baari aati hai to wo jo humara Global Object main Store hota hai that means hum usko kahin bhi Access krskte hain. 
+
+Now ab hum Shadowing smjhenge in JS:
+jab Inner Scope main hum same name ka Variable Declare krte hain jo Outer Scope main Already Exist krta hai, to Inner Variable Outer Variable ko Shadow krdeta hai.
+Example:
+let a = 10;
+
+{
+    let a = 20;
+
+    console.log(a); // 20
+}
+
+console.log(a); // 10
+
+Smjho ke yahan kia hua:
+Outer Scope main a = 10 hai
+inner Scope main dubara a = 20 declare kiya.
+Block Scope main inner a Access hoga, yani 20 
+Block ke bahar outer a access hoga, yani 10.
+
+Outer variable safe hai
+Inner variable ne outer variable ko replace nahi kiya, sirf shadow kiya.
+
+ek dafa hum Shadowing with var bhi dekhlete hain:
+var a = 10;
+
+{
+    var a = 20;
+}
+
+console.log(a); // 20
+
+kyun ke var humara Block Scope nahi hota to wo isko Donon Declaration main same function/global scope ke variable ko refer karte hain. isliye wo Update hojata hai.
 
 
+Illegal Shadowing
+Ye bohat important interview concept hai!
 
+Example:
+let a = 10;
 
+{
+    var a = 20;
+}
+
+SyntaxError
+Why?
+
+Kyunki let block scoped hai aur var block scope ko ignore karta hai.
+
+Is wajah se inner var a outer let a ke same scope mein conflict create karta hai.
+
+Lekin:
+var a = 10;
+
+{
+    let a = 20;
+}
+
+console.log(a); // 10
+
+Ye perfectly valid hai!
+
+ab hum ek cheez dekhte hain ke suppose humara yeh code hai:
+let b = 100;
+{
+    var a = 10;
+    let b = 20;
+    const c = 30;
+    console.log(a);
+    console.log(b);
+    console.log(c);
+}
+console.log(b)
+
+to yahan pe nuhh humara jo var a hai wo to Global Object main hi Store hoga 
+but jo humara let b hai Global ka wo humara ek new Script banayega means ek new Storage banayega and wahan Save hoga and
+block ke andar wala jo code hai wo to Block name se bana kar Save hojayega.
