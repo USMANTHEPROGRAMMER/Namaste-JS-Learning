@@ -308,11 +308,9 @@ const c = 30;
 console.log(window.b);
 console.log(window.c);
 
-
 Output:
 undefined
 undefined
-
 
 Kyun?
 
@@ -345,4 +343,116 @@ Kyun? Humne b naam ka variable declare hi nahi kiya.
 Simple Meaning:
 Undefined: Variable declared hai, lekin uski value abhi assign nahi hui.
 Not defined: Variable ko declare hi nahi kiya gaya, isliye access karne par ReferenceError aata hai.
+
+Now We'll Start Episode 7 The Scope Chain Scope, Lexical Environment:
+sabse pehle hum yeh Code Dekhte hain:
+function a() {
+    onsole.log(b);
+};
+var b = 10;
+a()
+iska Output aayega 10
+This is How it proves ke b can access outside of its Function
+ab hum log yeh wala Code dekhte hain like nuhh:
+function a() {
+    c()
+    function c() {
+        console.log(b)
+    }
+}
+var b = 10;
+a()
+Iska bhi Output Aayega 10
+that means ke if function inside in another function can still access the Global Scope Variables
+
+function a() {
+    var b = 10;
+    c()
+    function c() {
+
+    }
+}
+a()
+console.log(b);
+so is ka Output Aayega humare paas Not Defined there is a thing where er invent something which is Called Scope:
+So Scope Means ke Variable ya function ko hum apne Code main kahan Access krskte hain!
+Example:
+var a = 10;
+
+function greet() {
+    var b = 20;
+    console.log(a);
+    console.log(b);
+}
+
+greet();
+
+10
+20
+a global variable hai, isliye function ke andar access ho raha hai.
+b function ke andar declare hua hai, isliye woh us function ke andar accessible hai.
+
+Another Example:
+function greet() {
+    var b = 20;
+}
+
+console.log(b);
+
+Output: ReferenceError
+Kyun? Kyunki b sirf greet() ke scope mein available hai.
+
+Now ab hum dekhte hain ke Lexical Environment kia hota hai:
+Lexical Enviroment hota hai ke Local Memory ka Access bhi hota hai and Lexical Enviroment of the Parent ka bhi Access hota hai.
+
+Simple Words main hum ise yeh bhi kehskte hain:
+Lexical Environment woh environment hai jisme JavaScript apne variables aur outer environment ka reference rakhti hai.
+
+ab hum ek dafa Visually smjhlete hain Example se like ke:
+jab bhi Execution Context Create hota hai so hum ko ek Reference bhi milta hai or its Lexical Environment of its Parent
+So Memory Component main Variables or Functions ke ilawa humen ek Orange Thing bhi milti hai jise hum Assume krskte hain ke yeh Lexical Environment hai of its Parent.
+Like this:
+function a(){
+    var b = 10;
+    c();
+    function c() {
+
+    }
+}
+a();
+console.log(b)
+ab jaise humare paas c Function hai to Lexical Environment ka matlab hota hai ke use apne Variables ka bhi Access milega and Lexical Environment of the Parent ka bhi Access hota hai means function a ke bhi variables and functions ka access hota hai. and the a function ka Lexical Enviroment hai uska Local Memory Space and its Parent As Well Which is Global Scope
+
+and Global Space ke Case main Lexical Parent hoga null kyun ke uska koi Parent nahii but usko Global Scope ki har cheez k Access milega but kyun ke uska koi Lexical Parent nahi hai this is why wo null dega.
+
+Easy example:
+var a = 10;
+
+function outer() {
+    var b = 20;
+
+    function inner() {
+        var c = 30;
+        console.log(a, b, c);
+    }
+
+    inner();
+}
+
+outer();
+
+inner() ke paas apna variable c hai. Lekin woh apne parent function outer() ka b aur global scope ka a bhi access kar sakta hai.
+
+Aisa kyun?
+
+Kyunki JavaScript ka har function apne surrounding (jahan function likha gaya hai) environment se connected hota hai. Is connection ko Lexical Environment kehte hain.
+
+Now We'll See Scope Chain:
+Scope Chain woh process hai jisme JavaScript kisi variable ko apne current scope mein dhoondhti hai. Agar nahi milta, toh outer scope mein dhoondhti hai.
+
+Teeno ka difference
+Concept	                    Simple meaning
+Scope	                    Variable kahan accessible hai?
+Lexical Environment	        Variables aur outer environment ka reference
+Scope Chain	                Variable ko current se outer scopes tak search karna
 
