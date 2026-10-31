@@ -620,3 +620,7 @@ console.log(b)
 to yahan pe nuhh humara jo var a hai wo to Global Object main hi Store hoga 
 but jo humara let b hai Global ka wo humara ek new Script banayega means ek new Storage banayega and wahan Save hoga and
 block ke andar wala jo code hai wo to Block name se bana kar Save hojayega.
+
+Episode 10 is about QNA
+
+Episode
