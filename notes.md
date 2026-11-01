@@ -144,7 +144,7 @@ yeh Code dekho:
 greet();
 
 function greet() {
-    console.log("Hello!");
+console.log("Hello!");
 }
 
 Output:
@@ -155,11 +155,11 @@ aisa isliye hua ke Memory Creation Phase main key ka name fn ka name hota hai an
 
 hum log ab Arrow Function ko bhi dekhlete hain
 
-Arrow Function main nuhh Case thora different hota hai 
+Arrow Function main nuhh Case thora different hota hai
 
 greet();
 var greet = () => {
-    console.log("Hello!");
+console.log("Hello!");
 };
 is main hum ko Type Error ka Error Return krdega.
 kyun ke Memory Creation Phase main ek Function nahi balke ek variable store horha hai or uski Value Undefined hai
@@ -189,24 +189,26 @@ b()
 console.log(x)
 
 function (a) {
-    var x = 10;
-    console.log(x)
+var x = 10;
+console.log(x)
 }
 
 function (b) {
-    var x = 100;
-    console.log(x);
+var x = 100;
+console.log(x);
 }
 
 ab hum yeh dekhte hain ke BG main yeh Code kaise work krrha hota hai:
 Sabse pehle to ek ek GEC(Global Execution Context) banta hai:
 jahan code run hota hai and us GEC main 2 Phases main kam hota hai sabse pehle:
+
 1. Memory Creation Phase
 2. Code Execution Phase
 
 Memory Creation Phase
 
 Sabse pehle GEC ki memory mein:
+
 - x → undefined
 - a → poora function store hoga.
 - b → poora function store hoga.
@@ -236,8 +238,9 @@ sabse pehle yeh Code dekho:
 Ismein kuch bhi nahi likha. Lekin jab browser is file ko run karta hai tab bhi JavaScript kaafi kaam karti hai.
 jaisa ke humne pehle prha tha ke sabse pehle GEC banta hai.
 Us Waqt Browser main humen 2 cheezen Free main deta hai.
-window object 
+window object
 this keyword
+
 1. Window Object: Browser ka global object. Browser bohot saari cheezen iske andar rakhta hai.
 2. this: Global level par browser mein this isi window ko point karta hai.
 
@@ -245,13 +248,14 @@ Window Browser ka Global Object hai
 Browser bht saari cheezen iske andar rkhta hai.
 console.log(window);
 Iske andar tumhe bohot saari cheezen milengi:
+
 - alert
 - setTimeout
 - console
 - document
 - location
 - history
-Yaani ye sab browser humein window ke through deta hai.
+  Yaani ye sab browser humein window ke through deta hai.
 
 Step 3: this keyword kya hai?
 Global level par browser mein:
@@ -298,7 +302,6 @@ Kyun?
 
 Kyuki let aur const global hone ke baad bhi window ki property nahi bante.
 
-
 jab bhi hum kisi cheez ko access krte hain to wo Global Object main Check krta hai like jo cheez hum Global likh rhe hain and then hum ko Output Return krta hai.
 
 let aur const ke saath
@@ -333,10 +336,8 @@ not defined kya hota hai?
 Jab hum aise variable ko access karte hain jo exist hi nahi karta, toh JavaScript ReferenceError deti hai.
 console.log(b);
 
-
 Output:
 ReferenceError: b is not defined
-
 
 Kyun? Humne b naam ka variable declare hi nahi kiya.
 
@@ -347,7 +348,7 @@ Not defined: Variable ko declare hi nahi kiya gaya, isliye access karne par Refe
 Now We'll Start Episode 7 The Scope Chain Scope, Lexical Environment:
 sabse pehle hum yeh Code Dekhte hain:
 function a() {
-    onsole.log(b);
+onsole.log(b);
 };
 var b = 10;
 a()
@@ -355,10 +356,10 @@ iska Output aayega 10
 This is How it proves ke b can access outside of its Function
 ab hum log yeh wala Code dekhte hain like nuhh:
 function a() {
-    c()
-    function c() {
-        console.log(b)
-    }
+c()
+function c() {
+console.log(b)
+}
 }
 var b = 10;
 a()
@@ -366,11 +367,12 @@ Iska bhi Output Aayega 10
 that means ke if function inside in another function can still access the Global Scope Variables
 
 function a() {
-    var b = 10;
-    c()
-    function c() {
+var b = 10;
+c()
+function c() {
 
     }
+
 }
 a()
 console.log(b);
@@ -380,9 +382,9 @@ Example:
 var a = 10;
 
 function greet() {
-    var b = 20;
-    console.log(a);
-    console.log(b);
+var b = 20;
+console.log(a);
+console.log(b);
 }
 
 greet();
@@ -394,7 +396,7 @@ b function ke andar declare hua hai, isliye woh us function ke andar accessible 
 
 Another Example:
 function greet() {
-    var b = 20;
+var b = 20;
 }
 
 console.log(b);
@@ -413,11 +415,12 @@ jab bhi Execution Context Create hota hai so hum ko ek Reference bhi milta hai o
 So Memory Component main Variables or Functions ke ilawa humen ek Orange Thing bhi milti hai jise hum Assume krskte hain ke yeh Lexical Environment hai of its Parent.
 Like this:
 function a(){
-    var b = 10;
-    c();
-    function c() {
+var b = 10;
+c();
+function c() {
 
     }
+
 }
 a();
 console.log(b)
@@ -429,7 +432,7 @@ Easy example:
 var a = 10;
 
 function outer() {
-    var b = 20;
+var b = 20;
 
     function inner() {
         var c = 30;
@@ -437,6 +440,7 @@ function outer() {
     }
 
     inner();
+
 }
 
 outer();
@@ -451,10 +455,10 @@ Now We'll See Scope Chain:
 Scope Chain woh process hai jisme JavaScript kisi variable ko apne current scope mein dhoondhti hai. Agar nahi milta, toh outer scope mein dhoondhti hai.
 
 Teeno ka difference
-Concept	                    Simple meaning
-Scope	                    Variable kahan accessible hai?
-Lexical Environment	        Variables aur outer environment ka reference
-Scope Chain	                Variable ko current se outer scopes tak search karna
+Concept Simple meaning
+Scope Variable kahan accessible hai?
+Lexical Environment Variables aur outer environment ka reference
+Scope Chain Variable ko current se outer scopes tak search karna
 
 Now We're Starting Episode 8 Let & Const in JS and TDZ:
 sabse pehle hum ek smjhlete hain ke jab bhi hum var ko initialization se pehl access krne ki koshish krte thy it throws us undefined and jab bhi hum log let ko initialize krne se pehle console krate hain to yeh humen cannot access before initialization ka Error Throw krta hai means ke hum log isko initialize hone se pehle Access nahi krskte
@@ -470,6 +474,7 @@ Output:
 ReferenceError
 
 Kyun?
+
 1. JavaScript Memory Creation Phase mein a ko register karti hai.
 2. Lekin abhi usko value 10 assign nahi hui.
 3. Jab hum pehle hi a access karte hain, toh error aata hai.
@@ -485,19 +490,21 @@ Now variable can be accessed
 to jab bhi hum Variable ko Access krne ki koshish krte hain in TDZ to wo humko ReferenceError throw krta hai.
 
 1. Memory Creation Phase (GEC)
-Jab JavaScript code execute hota hai, sabse pehle GEC create hota hai. GEC ke Memory Creation Phase mein variables ke liye memory/bindings prepare hoti hain.
-Declaration	    Memory Creation Phase
-var a	        undefined
-let b	        Memory allocated, but uninitialized (TDZ)
-const c	        Memory allocated, but uninitialized (TDZ)   
+   Jab JavaScript code execute hota hai, sabse pehle GEC create hota hai. GEC ke Memory Creation Phase mein variables ke liye memory/bindings prepare hoti hain.
+   Declaration Memory Creation Phase
+   var a undefined
+   let b Memory allocated, but uninitialized (TDZ)
+   const c Memory allocated, but uninitialized (TDZ)
 
 Ek important baat yaad rakhna!
 Memory Creation Phase
+
 - var → undefined
 - let → Uninitialized (TDZ)
 - const → Uninitialized (TDZ)
 
 Code Execution Phase
+
 - var → Actual value
 - let → Actual value
 - const → Actual value
@@ -514,12 +521,13 @@ const to bht strict hai na hi to hum use Re-Declare krskte hain and naa hii Upda
 Difference BW TypeError, ReferenceError and SyntaxError
 
 Ultimate Difference Chart
-Error	Simple meaning
-SyntaxError	Code likhne ke rules mein mistake
-ReferenceError	Variable ka reference available nahi
-TypeError	Value par invalid operation perform karna
+Error Simple meaning
+SyntaxError Code likhne ke rules mein mistake
+ReferenceError Variable ka reference available nahi
+TypeError Value par invalid operation perform karna
 
 Yaad rakhne ka easiest formula
+
 - SyntaxError: Code likhne mein mistake.
 - ReferenceError: Variable nahi mil raha ya accessible nahi.
 - TypeError: Value mil gayi, lekin us par operation allowed nahi.
@@ -536,12 +544,12 @@ Block Scope: let aur const variables sirf us block { } ke andar accessible hote 
 
 humne ek aur cheez dekhi ke like jaise jab hum like yeh krte hain:
 {
-    let a = 100
-    const b = 1000
-    var c = 10000
+let a = 100
+const b = 1000
+var c = 10000
 }
 do humara jo Global Scope hai usmen humara c store hota hai as undefined firstly then after executing the code it assigned the value bu itself
-magar magar magar main game yeh hai ke let aur const ke liye humara ek alag Storage/Space bnta hai named as Block so that proves ke hum let aur const ko block ke bahar access nahi krskte but jab var ki baari aati hai to wo jo humara Global Object main Store hota hai that means hum usko kahin bhi Access krskte hain. 
+magar magar magar main game yeh hai ke let aur const ke liye humara ek alag Storage/Space bnta hai named as Block so that proves ke hum let aur const ko block ke bahar access nahi krskte but jab var ki baari aati hai to wo jo humara Global Object main Store hota hai that means hum usko kahin bhi Access krskte hain.
 
 Now ab hum Shadowing smjhenge in JS:
 jab Inner Scope main hum same name ka Variable Declare krte hain jo Outer Scope main Already Exist krta hai, to Inner Variable Outer Variable ko Shadow krdeta hai.
@@ -549,9 +557,10 @@ Example:
 let a = 10;
 
 {
-    let a = 20;
+let a = 20;
 
     console.log(a); // 20
+
 }
 
 console.log(a); // 10
@@ -559,7 +568,7 @@ console.log(a); // 10
 Smjho ke yahan kia hua:
 Outer Scope main a = 10 hai
 inner Scope main dubara a = 20 declare kiya.
-Block Scope main inner a Access hoga, yani 20 
+Block Scope main inner a Access hoga, yani 20
 Block ke bahar outer a access hoga, yani 10.
 
 Outer variable safe hai
@@ -569,13 +578,12 @@ ek dafa hum Shadowing with var bhi dekhlete hain:
 var a = 10;
 
 {
-    var a = 20;
+var a = 20;
 }
 
 console.log(a); // 20
 
 kyun ke var humara Block Scope nahi hota to wo isko Donon Declaration main same function/global scope ke variable ko refer karte hain. isliye wo Update hojata hai.
-
 
 Illegal Shadowing
 Ye bohat important interview concept hai!
@@ -584,7 +592,7 @@ Example:
 let a = 10;
 
 {
-    var a = 20;
+var a = 20;
 }
 
 SyntaxError
@@ -598,7 +606,7 @@ Lekin:
 var a = 10;
 
 {
-    let a = 20;
+let a = 20;
 }
 
 console.log(a); // 10
@@ -608,19 +616,152 @@ Ye perfectly valid hai!
 ab hum ek cheez dekhte hain ke suppose humara yeh code hai:
 let b = 100;
 {
-    var a = 10;
-    let b = 20;
-    const c = 30;
-    console.log(a);
-    console.log(b);
-    console.log(c);
+var a = 10;
+let b = 20;
+const c = 30;
+console.log(a);
+console.log(b);
+console.log(c);
 }
 console.log(b)
 
-to yahan pe nuhh humara jo var a hai wo to Global Object main hi Store hoga 
+to yahan pe nuhh humara jo var a hai wo to Global Object main hi Store hoga
 but jo humara let b hai Global ka wo humara ek new Script banayega means ek new Storage banayega and wahan Save hoga and
 block ke andar wala jo code hai wo to Block name se bana kar Save hojayega.
 
 Episode 10 is about QNA
 
-Episode
+Now We'll Start Episode-10 Closures:
+We'll Understand this by Simple Example:
+function a() {
+var a = 10
+function b() {
+console.log(a)
+}
+b()
+}
+a()
+Now Like hum logon ne Lexical Environment prha tha to usmen yehi tha ke wo apni Memory main dekhega nahi mila to Lexical Parent ko dekhega Right?
+so iska output 10 hi hoga this is what the Concept of Closure is Actually So Far.
+
+Remember:
+Function with a Lexical Scope Forms a Closure.
+
+ab Actual Closure dekhte hain:
+function outer() {
+let a = 10;
+function inner() {
+console.log(a)
+}
+return inner
+}
+let result = outer()
+result()
+
+hum ek dafa dubara Basic se smjhlete hain:
+Sabse Pehle hum dekhte hain Normal Function Execution:
+var a = 10;
+
+function outer() {
+    var b = 20;
+    console.log(a);
+    console.log(b);
+}
+
+outer();
+
+Sabse pehle to GEC Create hoga Memory Creation Phase:
+a: undefined 
+outer: {...}
+
+then Code Exeuction Phase:
+a = 10 Assign hoga
+outer() call hoga.
+outer() ka apna Function Execution Context (FEC) create hoga.
+
+Outer ka FEC Create hoga:
+ab outer() ke andar 2 Phases Ajaeygngy pehle Memory Creation Phase ko dekhlete hain:
+b: undefined
+
+Code execution mein b = 20 ho jayega.
+Ab console.log(a) execute hoga.
+
+JavaScript a ko outer function mein search karegi. Nahi milega, toh GEC mein search karegi. Wahan a = 10 mil jayega.
+
+Output:
+10
+20
+
+ab kia hoga ke Outer Function Finish hojayega means jab Outer() Complete hojayega Outer ka FEC Call Stack se Remove hojaayega kyun ke usne to apna poora kaam Complete krlia naw that's why lekin GEC abhi bhi Exist krega.
+
+yeh Normal Function Execution tha!!
+
+Now ab hum Closure smjhenge:
+ab Code main sirf ek Change krte hain:
+function outer() {
+    var b = 20;
+
+    function inner() {
+        console.log(b);
+    }
+
+    return inner;
+}
+
+var result = outer();
+
+result();
+
+ab isko Step by Step Execute krte hain:
+Step 1: GEC Create hoga 
+Memory Creation Phase:
+outer:	Complete function
+result:	undefined
+
+Step 2: outer() call hoga
+Outer ka FEC create hoga.
+
+Memory Creation Phase:
+b:	undefined
+inner:	Complete function
+
+Code Execution Phase:
+b = 20 
+and then return inner Execute hoga.
+
+Important: Humne inner() nahi likha, humne inner return kiya hai. Matlab function ko return kiya hai, execute nahi kiya.
+
+Step 3: Outer function finish ho gaya
+Ab normally hum expect karenge ke outer ka FEC remove ho jayega.
+
+Aur haan, Call Stack se outer ka FEC remove ho jayega.
+
+Lekin ab interesting part aata hai!
+
+inner function apne outer lexical environment ke saath connection retain karta hai.
+
+Isliye b = 20 ko access karne ki ability preserve rehti hai, even though outer() finish ho chuka hai.
+
+Step 4: result() execute hoga
+var result = outer();
+
+result();
+
+
+Yahan result ke andar inner function hai.
+
+Jab result() execute hoga:
+- Inner ka apna FEC create hoga.
+- console.log(b) execute hoga.
+- JavaScript inner ke local scope mein b search karegi.
+- Nahi milega.
+- Outer lexical environment mein search karegi.
+- Wahan b = 20 mil jayega!
+Output: 20
+
+jab hum logon ne return kia inner to jo hai wo poora function and lexical Scope Return krta hai.
+
+and Closure ki ek alag se Memory banti hai in Browser.
+
+
+

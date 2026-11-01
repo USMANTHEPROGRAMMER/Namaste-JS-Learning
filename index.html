@@ -46,15 +46,27 @@
       // let a = 10
       // console.log(b)
       // var b = 100
-      
-      function hello() {
-        console.log("Hello")
-        function greet() {
-          var ushra = 100
-        }
-      }
 
-      console.log(ushra)
+      // function hello() {
+      //   console.log("Hello")
+      //   function greet() {
+      //     var ushra = 100
+      //   }
+      // }
+
+      // console.log(ushra)
+
+      // Closures:
+      function a() {
+        var a = 10 
+        function b() {
+          console.log(a)
+        }
+        b()
+      }
+      a()
+
+
 
     </script>
   </body>
